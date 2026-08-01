@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.rewst.io/
+summary: >-
+  Operational-transparency signals for Rewst. Rewst publishes a live status page for its
+  services. No formal API versioning or deprecation policy (RFC 8594 Sunset/Deprecation
+  headers) is published, consistent with a platform whose programmatic surface is inbound
+  webhook triggers rather than a versioned public REST API.
+status_page: https://status.rewst.io/
+status_page_repo: https://github.com/RewstApp/status.rewst.io
+versioning:
+  scheme: none-published
+  detail: No public API version scheme documented.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: No published deprecation policy or Sunset/Deprecation header support found.
+sla:
+  url: null
+  detail: No public SLA/uptime commitment found on the marketing or docs surface.

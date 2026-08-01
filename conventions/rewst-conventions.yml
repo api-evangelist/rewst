@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/using-webhook-triggers.md
+summary: >-
+  Cross-cutting request/response semantics for Rewst's documented programmatic surface
+  (inbound custom webhook triggers). Rewst does not publish a general public REST/OpenAPI
+  reference, so these conventions are scoped to the webhook ingress and platform behavior
+  that Rewst documents.
+authentication:
+  style: shared-secret-header
+  header: x-rewst-secret
+  detail: Optional per-trigger secret; missing/mismatch returns 401. See authentication/rewst-authentication.yml
+idempotency:
+  supported: false
+  detail: >-
+    Rewst does not document an idempotency-key mechanism for webhook triggers. Each accepted
+    request starts a workflow execution; de-duplication, if needed, is the caller's or the
+    workflow's responsibility.
+rate_limiting:
+  signaled: true
+  limits: 50 req/s and 1000 req/min per trigger
+  exceeded_status: 429
+  headers: [Retry-After, x-ratelimit-reset]
+  cross_ref: rate-limits/rewst-rate-limits.yml
+request_envelope:
+  detail: >-
+    Inbound request normalized to {body, headers, method, params, timestamp}, surfaced to
+    workflows as context variables (CTX.body.*, CTX.params.*).
+error_envelope:
+  detail: >-
+    Documented failure signals are HTTP status codes (401 unauthenticated, 429 rate limited,
+    method-not-allowed for disallowed HTTP method). See errors/rewst-problem-types.yml
+cors:
+  detail: Webhook triggers can be configured to accept CORS requests.
+  source: https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/configure-a-webhook-trigger-for-cors-requests.md
+cross_links:
+  authentication: authentication/rewst-authentication.yml
+  errors: errors/rewst-problem-types.yml
+  lifecycle: lifecycle/rewst-lifecycle.yml
+  rate_limits: rate-limits/rewst-rate-limits.yml

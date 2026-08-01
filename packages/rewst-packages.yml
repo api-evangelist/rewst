@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/orgs/RewstApp/repositories; https://pypi.org
+notes: >-
+  Rewst does not publish a first-party API client SDK (it has no broadly published public
+  REST/OpenAPI surface). These are the first-party open-source packages/libraries the
+  RewstApp organization publishes. They are helper libraries and the on-prem agent, not API
+  client SDKs, so no SDKs pointer is emitted.
+packages:
+- language: python
+  registry: pypi
+  name: jinja-comprehensions
+  version: 0.1.1
+  url: https://pypi.org/project/jinja-comprehensions/
+  install: pip install jinja-comprehensions
+  official: true
+  description: Jinja2 environment supporting Python comprehensions (used in Rewst templating).
+- language: python
+  registry: pypi
+  name: jinja-try-catch
+  version: 0.1.1
+  url: https://pypi.org/project/jinja-try-catch/
+  install: pip install jinja-try-catch
+  official: true
+  description: Jinja2 extension adding {% try %} {% catch %} exception handling.
+- language: go
+  registry: github
+  name: agent-smith-go
+  url: https://github.com/RewstApp/agent-smith-go
+  official: true
+  description: Rewst Agent Smith endpoint agent (Go).
+- language: typescript
+  registry: github
+  name: agent-smith-tray
+  url: https://github.com/RewstApp/agent-smith-tray
+  official: true
+  description: System-tray/menu-bar companion for Agent Smith enabling user-session interaction.

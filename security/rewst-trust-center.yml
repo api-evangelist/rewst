@@ -1,0 +1,15 @@
+generated: '2026-07-20'
+method: searched
+probe: true
+source: https://rewst.io/security
+url: https://rewst.io/security
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://rewst.io/security
+  keywords:
+  - soc 2
+  - soc2
+  - trust center
+  - gdpr

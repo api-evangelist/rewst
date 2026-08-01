@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rewst.help/security/webhook-trigger-rate-limits.md
+scope: per webhook trigger
+rate_limits:
+- surface: webhook-trigger
+  limit_count: 50
+  window: second
+  description: 50 requests per second per individual webhook trigger.
+- surface: webhook-trigger
+  limit_count: 1000
+  window: minute
+  description: 1000 requests per minute per individual webhook trigger.
+exceeded:
+  status: 429
+  status_text: Too Many Requests
+  headers:
+    Retry-After: '10'
+    x-ratelimit-reset: '10'
+  guidance: >-
+    Callers should honor Retry-After and use exponential back-off. Rewst does not retry
+    on the caller's behalf; naive immediate retries cause loops and continued limiting.

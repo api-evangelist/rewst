@@ -1,0 +1,12 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rewst.help/documentation/automations/forms/embedding-a-form-into-an-iframe.md
+components:
+- family: Forms
+  type: embeddable-iframe
+  name: Rewst Form
+  description: >-
+    Rewst Forms (built in the Form Builder) can be embedded into an external page/portal via
+    an iFrame, presenting a self-service automation-trigger surface to end users.
+  loader: iframe embed (no JS SDK)
+  docs: https://docs.rewst.help/documentation/automations/forms/embedding-a-form-into-an-iframe.md

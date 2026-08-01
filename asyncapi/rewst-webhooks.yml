@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/using-webhook-triggers.md
+spec_type: Webhooks
+type: Webhooks
+summary: >-
+  Rewst exposes inbound custom webhook triggers: an external system POSTs (or uses
+  another configured HTTP method) to a per-trigger URL, and the payload starts a
+  Rewst workflow. This is the platform's primary programmatic ingress surface.
+endpoint:
+  url_pattern: https://engine.rewst.io/webhooks/custom/trigger/{TriggerID}/{OrganizationID}
+  methods_note: >-
+    Each trigger declares which single HTTP request method it accepts; requests using
+    other methods are rejected.
+authentication:
+  scheme: shared-secret
+  header: x-rewst-secret
+  behavior: >-
+    Optional per-trigger secret. When configured, a request missing or mismatching the
+    x-rewst-secret header returns HTTP 401. Secrets may be stored in Organization Variables.
+payload_schema:
+  description: >-
+    The incoming request is normalized into a fixed envelope exposed to the workflow via
+    context variables (e.g. CTX.body.<field>, CTX.params.<field>).
+  fields:
+  - body: object
+  - headers: object
+  - method: string
+  - params: object
+  - timestamp: string
+rate_limits:
+  per_trigger:
+    requests_per_second: 50
+    requests_per_minute: 1000
+  on_exceed:
+    status: 429
+    headers:
+      Retry-After: '10'
+      x-ratelimit-reset: '10'
+  guidance: Use exponential back-off; naive immediate retries prolong rate limiting.
+  source: https://docs.rewst.help/security/webhook-trigger-rate-limits.md
+related_docs:
+- https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/configure-a-webhook-trigger-for-cors-requests.md
+- https://docs.rewst.help/documentation/automations/intro-to-triggers.md

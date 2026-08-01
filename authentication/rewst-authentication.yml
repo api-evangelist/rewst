@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.rewst.help/documentation/app-builder/authentication.md
+docs: https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/using-webhook-triggers.md
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  notes: >-
+    Rewst has no broadly published public REST/OpenAPI reference. Its documented
+    programmatic surface is the inbound webhook trigger, authenticated with an
+    optional shared secret sent in the x-rewst-secret header. The Rewst web app
+    (app.rewst.io) itself authenticates users via Auth0-hosted OIDC (see the
+    RewstApp/nextjs-auth0 repository), but that is the interactive login flow,
+    not a documented machine-to-machine API auth scheme.
+schemes:
+- name: WebhookSecret
+  type: apiKey
+  in: header
+  parameter_name: x-rewst-secret
+  required: false
+  description: >-
+    Shared secret configured per webhook trigger. When set, callers must send the
+    matching value in the x-rewst-secret header or receive HTTP 401. Secrets can be
+    stored in Rewst Organization Variables.
+  source: https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/using-webhook-triggers.md
+- name: Auth0OIDC
+  type: openIdConnect
+  in: browser
+  required: true
+  description: >-
+    Interactive user sign-in to the Rewst application is handled by Auth0-hosted
+    OpenID Connect. This governs human login to app.rewst.io, not webhook/API calls.
+  source: https://github.com/RewstApp/nextjs-auth0

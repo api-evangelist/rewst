@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://rewst.io/trust-center; https://docs.rewst.help/security/rewst-trust-and-security-center.md;
+  https://docs.rewst.help/security/webhook-trigger-rate-limits.md
+standards:
+- id: soc2-type2
+  conforms: true
+  evidence: Rewst has achieved SOC 2 Type 2 (trust center; full report available on request).
+- id: gdpr
+  conforms: true
+  evidence: GDPR listed in Rewst's compliance framework; sub-processors list published.
+- id: rfc6585-rate-limiting
+  conforms: true
+  evidence: Webhook triggers return HTTP 429 with Retry-After on rate-limit exceed.
+- id: oidc
+  conforms: true
+  evidence: Application login via Auth0-hosted OpenID Connect (RewstApp/nextjs-auth0).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json error registry published.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: No /.well-known/security.txt published (all hosts 404); disclosure via Bugcrowd page.
+- id: openapi
+  conforms: false
+  evidence: No public OpenAPI/Swagger description published.

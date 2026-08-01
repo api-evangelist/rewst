@@ -1,9 +1,29 @@
 aid: rewst
 name: Rewst
-description: 'Rewst is a company surfaced as a portfolio company of sapphire-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: devops. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: >-
+  Rewst is a workflow automation and integration (iPaaS/RPA) platform built specifically for
+  managed service providers (MSPs). It combines a visual workflow builder, a form builder, an
+  app builder, 90+ managed MSP integrations (PSA, RMM, Microsoft 365, security tools), reusable
+  automation packages called Crates, and RoboRewsty, an AI assistant, so MSP teams can automate
+  repetitive operational tasks. Rewst's primary programmatic surface is inbound custom webhook
+  triggers that start workflows, authenticated with an optional x-rewst-secret header and rate
+  limited per trigger; it also offers a Generic GraphQL request action for calling external
+  APIs from within workflows. Rewst is SOC 2 Type 2 compliant, publishes a live status page,
+  and runs a Bugcrowd vulnerability-disclosure program. Backed by Sapphire Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/rewst/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/75550907?v=4
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,11 +32,41 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Devops
-apis: []
+- Automation
+- iPaaS
+- RPA
+- Workflow Automation
+- MSP
+- Integration
+- Webhooks
+apis:
+- name: Rewst Webhook Triggers
+  description: >-
+    Inbound custom webhook triggers that start Rewst workflows. An external system sends an HTTP
+    request (method configured per trigger) to a per-trigger URL; the normalized payload
+    ({body, headers, method, params, timestamp}) is exposed to the workflow via context
+    variables. Optional shared-secret authentication via the x-rewst-secret header; rate limited
+    to 50 req/s and 1000 req/min per trigger.
+  humanURL: https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/using-webhook-triggers.md
+  baseURL: https://engine.rewst.io
+  tags:
+  - Webhooks
+  - Automation
+  properties:
+  - type: Webhooks
+    url: asyncapi/rewst-webhooks.yml
+  - type: Authentication
+    url: authentication/rewst-authentication.yml
+  - type: RateLimits
+    url: rate-limits/rewst-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/rewst-problem-types.yml
+  - type: Conventions
+    url: conventions/rewst-conventions.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +75,62 @@ maintainers:
 common:
 - type: Website
   url: https://rewst.io/
+- type: DeveloperPortal
+  url: https://docs.rewst.help/
+- type: Documentation
+  url: https://docs.rewst.help/
+- type: GettingStarted
+  url: https://docs.rewst.help/readme.md
+- type: Support
+  url: https://rewst.io/support/community
+- type: Blog
+  url: https://rewst.io/blog
+- type: GitHubOrganization
+  url: https://github.com/RewstApp
+- type: Pricing
+  url: https://rewst.io/pricing
+- type: Login
+  url: https://app.rewst.io/
+- type: TermsOfService
+  url: https://rewst.io/terms-of-service/
+- type: PrivacyPolicy
+  url: https://rewst.io/privacy-policy
+- type: StatusPage
+  url: https://status.rewst.io/
+- type: TrustCenter
+  url: security/rewst-trust-center.yml
+- type: Compliance
+  url: https://rewst.io/trust-center
+- type: Security
+  url: https://rewst.io/vulnerability-disclosure
+- type: VulnerabilityDisclosure
+  url: security/rewst-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/rewst-domain-security.yml
+- type: Webhooks
+  url: asyncapi/rewst-webhooks.yml
+- type: Authentication
+  url: authentication/rewst-authentication.yml
+- type: RateLimits
+  url: rate-limits/rewst-rate-limits.yml
+- type: Conventions
+  url: conventions/rewst-conventions.yml
+- type: ErrorCatalog
+  url: errors/rewst-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/rewst-lifecycle.yml
+- type: Conformance
+  url: conformance/rewst-conformance.yml
+- type: Packages
+  url: packages/rewst-packages.yml
+- type: Components
+  url: components/rewst-components.yml
+- type: WellKnown
+  url: well-known/rewst-well-known.yml
+- type: LLMsTxt
+  url: llms/rewst-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1

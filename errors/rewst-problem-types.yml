@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/using-webhook-triggers.md;
+  https://docs.rewst.help/security/webhook-trigger-rate-limits.md
+format: http-status
+notes: >-
+  Rewst does not publish an RFC 9457 problem-type registry or a general API error reference.
+  These are the failure signals documented for the inbound webhook trigger surface, captured
+  as plain HTTP status codes.
+problems:
+- status: 401
+  title: Unauthorized
+  meaning: >-
+    A webhook trigger has a secret configured but the request omitted or mismatched the
+    x-rewst-secret header.
+  remediation: Send the correct x-rewst-secret header value configured on the trigger.
+  source: using-webhook-triggers.md
+- status: 405
+  title: Method Not Allowed
+  meaning: >-
+    The request used an HTTP method other than the single method the trigger is configured
+    to accept.
+  remediation: Use the HTTP method the trigger declares.
+  source: using-webhook-triggers.md
+- status: 429
+  title: Too Many Requests
+  meaning: >-
+    The per-trigger rate limit (50 req/s or 1000 req/min) was exceeded.
+  remediation: >-
+    Honor the Retry-After / x-ratelimit-reset headers (10s) and use exponential back-off.
+  source: webhook-trigger-rate-limits.md
