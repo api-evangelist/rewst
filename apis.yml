@@ -35,6 +35,16 @@ created: '2026-07-17'
 modified: '2026-07-21'
 tags:
 - Company
+- DevOps
+- Automation
+- iPaaS
+- RPA
+- Workflow-Automation
+- MSP
+- Integration
+- Webhook
+tags_raw:
+- Company
 - Devops
 - Automation
 - iPaaS
@@ -54,6 +64,9 @@ apis:
   humanURL: https://docs.rewst.help/documentation/automations/intro-to-triggers/use-cases-and-examples/using-webhook-triggers.md
   baseURL: https://engine.rewst.io
   tags:
+  - Webhook
+  - Automation
+  tags_raw:
   - Webhooks
   - Automation
   properties:
