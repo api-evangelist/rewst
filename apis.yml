@@ -52,7 +52,7 @@ tags:
 - Automation
 - iPaaS
 - RPA
-- Workflow-Automation
+- Workflow Automation
 - MSP
 - Integration
 - Webhook
@@ -66,6 +66,7 @@ tags_raw:
 - MSP
 - Integration
 - Webhooks
+- Workflow-Automation
 apis:
 - name: Rewst Webhook Triggers
   description: >-
